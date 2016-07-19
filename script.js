@@ -135,15 +135,21 @@ document.getElementById("right-button").addEventListener("click", moveRight);
 // button to mark a cell
 makeButton("mark-button", "", "Mark Cell", buttonDiv);
 
+function markCell(event) {
+  selectedCell.style.backgroundColor = "yellow";
+}
+
+document.getElementById("mark-button").addEventListener("click", markCell);
+
 // button styles
 var directButtons = document.getElementsByClassName("direction-button");
 for(var i=0; i < directButtons.length; i++) {
   directButtons[i].style.width = "100px";
-  directButtons[i].style.background = "skyblue";
+  directButtons[i].style.backgroundColor = "skyblue";
 }
 
 var markButton = document.getElementById("mark-button");
 markButton.style.width = "100px";
-markButton.style.background = "yellow";
+markButton.style.backgroundColor = "orange";
 
 
