@@ -28,7 +28,18 @@ for(var i=1; i <= 3; i++) {
     newData.textContent = j + ", " + i;
     rowContent.appendChild(newData);
   }
-  
 }
 
 document.body.appendChild(newTable);
+
+var dataStyle = "width: 100px; border: 1px solid #000; padding: 2px;"
+var thArray = document.body.getElementsByTagName("th");
+var tdArray = document.body.getElementsByTagName("td");
+
+for(var i=0; i < thArray.length; i++) {
+  thArray[i].style.cssText = dataStyle;
+}
+
+for(var i=0; i < tdArray.length; i++) {
+  tdArray[i].style.cssText = dataStyle;
+}
