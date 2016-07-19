@@ -48,6 +48,8 @@ var dataStyle = "width: 100px; border: 1px solid #000; padding: 2px;"
 var thArray = document.body.getElementsByTagName("th");
 var tdArray = document.body.getElementsByTagName("td");
 
+newTable.style.borderCollapse = "collapse";
+
 for(var i=0; i < thArray.length; i++) {
   thArray[i].style.cssText = dataStyle;
 }
@@ -57,8 +59,6 @@ for(var i=0; i < tdArray.length; i++) {
 }
 
 // selected cell style
-//var trArray = document.body.getElementsByTagName("tr");
-//var selectedCell = trArray[1].getElementsByTagName("td")[0];
 var selectedIndex = 0;
 var selectedCell = tdArray[selectedIndex];
 var selectStyle = function(event) {
@@ -75,8 +75,8 @@ function makeButton(idName, classNames, text, parentNode) {
   newButton.className = classNames;
   newButton.textContent = text;
   parentNode.appendChild(newButton);
-  var breakLine = document.createElement("br");
-  parentNode.appendChild(breakLine);
+  //var breakLine = document.createElement("br");
+  //parentNode.appendChild(breakLine);
 }
 
 // div for buttons
@@ -84,12 +84,19 @@ var newDiv = document.createElement("div");
 newDiv.id = "buttons";
 document.body.appendChild(newDiv);
 var buttonDiv = document.getElementById("buttons")
+buttonDiv.appendChild(document.createElement("br"));
 
 // directional buttons
 makeButton("up-button", "direction-button", "Move Up", buttonDiv);
-makeButton("down-button", "direction-button", "Move Down", buttonDiv);
+
+buttonDiv.appendChild(document.createElement("br"));
+
 makeButton("left-button", "direction-button", "Move Left", buttonDiv);
 makeButton("right-button", "direction-button", "Move Right", buttonDiv);
+
+buttonDiv.appendChild(document.createElement("br"));
+
+makeButton("down-button", "direction-button", "Move Down", buttonDiv);
 
 function moveUp(event) {
   if ((selectedIndex - 4) >= 0 ) {
@@ -133,6 +140,7 @@ document.getElementById("left-button").addEventListener("click", moveLeft);
 document.getElementById("right-button").addEventListener("click", moveRight);
 
 // button to mark a cell
+buttonDiv.appendChild(document.createElement("br"));
 makeButton("mark-button", "", "Mark Cell", buttonDiv);
 
 function markCell(event) {
@@ -148,8 +156,12 @@ for(var i=0; i < directButtons.length; i++) {
   directButtons[i].style.backgroundColor = "skyblue";
 }
 
+document.getElementById("up-button").style.marginLeft = "50px";
+document.getElementById("down-button").style.marginLeft = "50px";
+
 var markButton = document.getElementById("mark-button");
-markButton.style.width = "100px";
+markButton.style.width = "200px";
 markButton.style.backgroundColor = "orange";
+markButton.style.marginTop = "10px";
 
 
