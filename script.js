@@ -1,9 +1,5 @@
 // Create a 4 row table
 var newTable = document.createElement("table");
-//var tableHead = document.createElement("thead");
-//var tableBody = document.createElement("tbody");
-//newTable.appendChild(tableHead);
-//newTable.appendChild(tableBody);
 
 for(var i=0; i < 4; i++) {
   var newRow = document.createElement("tr");
@@ -20,7 +16,7 @@ function populateRow(cellType, cellContent) {
 // Add 4 header columns to the first row
 var rowContent = newTable.firstElementChild;
 
-for(var i=1; i <= 4; i++) {
+for(var i=1; i < 5; i++) {
   /*
   var newHead = document.createElement("th");
   newHead.textContent = "Header " + i;
@@ -30,10 +26,10 @@ for(var i=1; i <= 4; i++) {
 }
 
 // Add 4 data cells to each of the other 3 rows
-for(var i=1; i <= 3; i++) {
+for(var i=1; i < 4; i++) {
   rowContent = rowContent.nextElementSibling;
   
-  for(var j=1; j <= 4; j++){
+  for(var j=1; j < 5; j++){
     /*
     var newData = document.createElement("td");
     newData.textContent = j + ", " + i;
@@ -60,4 +56,28 @@ for(var i=0; i < tdArray.length; i++) {
   tdArray[i].style.cssText = dataStyle;
 }
 
-// Create directional buttons
+// Declare a button-making function
+function makeButton(idName, className, text, parentNode) {
+  var newButton = document.createElement("button");
+  newButton.id = idName;
+  newButton.className = className;
+  newButton.textContent = text;
+  parentNode.appendChild(newButton);
+  var breakLine = document.createElement("br");
+  parentNode.appendChild(breakLine);
+}
+
+// div for buttons
+var newDiv = document.createElement("div");
+newDiv.id = "buttons";
+document.body.appendChild(newDiv);
+var buttonDiv = document.getElementById("buttons")
+
+// directional buttons
+makeButton("up-button", "direction-button", "Move Up", buttonDiv);
+makeButton("down-button", "direction-button", "Move Down", buttonDiv);
+makeButton("left-button", "direction-button", "Move Left", buttonDiv);
+makeButton("right-button", "direction-button", "Move Right", buttonDiv);
+
+// button to mark a cell
+makeButton("mark-button", "", "Mark Cell", buttonDiv);
