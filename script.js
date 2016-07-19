@@ -91,6 +91,47 @@ makeButton("down-button", "direction-button", "Move Down", buttonDiv);
 makeButton("left-button", "direction-button", "Move Left", buttonDiv);
 makeButton("right-button", "direction-button", "Move Right", buttonDiv);
 
+function moveUp(event) {
+  if ((selectedIndex - 4) >= 0 ) {
+    selectedCell.style.border = "1px solid #000";
+    selectedIndex = selectedIndex - 4;
+    selectedCell = tdArray[selectedIndex];
+    selectStyle();
+  }
+}
+
+function moveDown(event) {
+  if ((selectedIndex + 4) < tdArray.length ) {
+    selectedCell.style.border = "1px solid #000";
+    selectedIndex += 4;
+    selectedCell = tdArray[selectedIndex];
+    selectStyle();
+  }
+}
+
+function moveLeft(event) {
+  if (selectedIndex !== 0 && selectedIndex !== 4 && selectedIndex !== 8) {
+    selectedCell.style.border = "1px solid #000";
+    selectedIndex--;
+    selectedCell = tdArray[selectedIndex];
+    selectStyle();
+  }
+}
+
+function moveRight(event) {
+  if (selectedIndex !== 3 && selectedIndex !== 7 && selectedIndex !== 11) {
+    selectedCell.style.border = "1px solid #000";
+    selectedIndex++;
+    selectedCell = tdArray[selectedIndex];
+    selectStyle();
+  }
+}
+
+document.getElementById("up-button").addEventListener("click", moveUp);
+document.getElementById("down-button").addEventListener("click", moveDown);
+document.getElementById("left-button").addEventListener("click", moveLeft);
+document.getElementById("right-button").addEventListener("click", moveRight);
+
 // button to mark a cell
 makeButton("mark-button", "", "Mark Cell", buttonDiv);
 
