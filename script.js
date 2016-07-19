@@ -56,11 +56,23 @@ for(var i=0; i < tdArray.length; i++) {
   tdArray[i].style.cssText = dataStyle;
 }
 
+// selected cell style
+//var trArray = document.body.getElementsByTagName("tr");
+//var selectedCell = trArray[1].getElementsByTagName("td")[0];
+var selectedIndex = 0;
+var selectedCell = tdArray[selectedIndex];
+var selectStyle = function(event) {
+  selectedCell.style.border = "3px solid #000";
+};
+
+document.addEventListener("DOMContentLoaded", selectStyle);
+
+
 // Declare a button-making function
-function makeButton(idName, className, text, parentNode) {
+function makeButton(idName, classNames, text, parentNode) {
   var newButton = document.createElement("button");
   newButton.id = idName;
-  newButton.className = className;
+  newButton.className = classNames;
   newButton.textContent = text;
   parentNode.appendChild(newButton);
   var breakLine = document.createElement("br");
@@ -81,3 +93,16 @@ makeButton("right-button", "direction-button", "Move Right", buttonDiv);
 
 // button to mark a cell
 makeButton("mark-button", "", "Mark Cell", buttonDiv);
+
+// button styles
+var directButtons = document.getElementsByClassName("direction-button");
+for(var i=0; i < directButtons.length; i++) {
+  directButtons[i].style.width = "100px";
+  directButtons[i].style.background = "skyblue";
+}
+
+var markButton = document.getElementById("mark-button");
+markButton.style.width = "100px";
+markButton.style.background = "yellow";
+
+
